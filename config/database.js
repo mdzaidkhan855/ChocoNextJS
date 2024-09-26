@@ -20,7 +20,7 @@ const connectDB = async () => {
       {
           useNewUrlParser: true,
           useUnifiedTopology: true,
-          serverSelectionTimeoutMS: 30000, // 30 seconds
+          serverSelectionTimeoutMS: 300000, // 30 seconds
         }
     );
     connected = true;
