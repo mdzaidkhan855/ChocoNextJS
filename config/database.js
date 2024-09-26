@@ -15,14 +15,20 @@ const connectDB = async () => {
   }
 
   try {
-    const connectedEstablished = await mongoose.connect(
-      process.env.MONGODB_URI,
-      {
-          useNewUrlParser: true,
-          useUnifiedTopology: true,
-          serverSelectionTimeoutMS: 300000, // 30 seconds
-        }
-    );
+    if (!mongoose.connection.readyState) {
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+  }
+    // const connectedEstablished = await mongoose.connect(
+    //   process.env.MONGODB_URI,
+    //   {
+    //       useNewUrlParser: true,
+    //       useUnifiedTopology: true,
+    //       serverSelectionTimeoutMS: 300000, // 30 seconds
+    //     }
+    // );
     connected = true;
   } catch (error) {
     console.log(error);
