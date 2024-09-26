@@ -1,5 +1,9 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+
+import { Provider } from "react-redux";
+import store from "@/cart/store"; // Adjust path based on your structure
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,7 +27,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* <Provider store={store}> */}
+        <Navbar />
         {children}
+        {/* </Provider> */}
       </body>
     </html>
   );
